@@ -1,0 +1,73 @@
+{{#partial "contenido" }}
+    <div class="table-responsive">
+
+        {{#if Miembro}}
+            <div class="center">
+                <a class="btn btn-primary" href="/apertura-incidente">Registrar un nuevo Incidente</a>
+            </div>
+        {{/if}}
+        <br>
+        <br>
+        <h3>Incidentes abiertos</h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Servicio Afectado</th>
+                <th>Fecha Apertura</th>
+                <th>Observaciones Apertura</th>
+                <th>Acciones</th>
+            </tr>
+            <tbody>
+            {{#each incidentesXCerrar}}
+                <tr>
+                    <td>{{this.servicio.nombre}}</td>
+                    <td>{{this.fechaApertura}}</td>
+                    <td>{{this.observacionesApertura}}</td>
+                    <td>
+                        {{#if Miembro}}
+                            <a class="btn btn-secondary" href="incidente/{{this.id}}/cerrar"> Cerrar </a>
+                        {{/if}}
+                    </td>
+                </tr>
+            {{/each}}
+            {{#each incidentes}}
+                <tr>
+                    <td>{{this.servicio.nombre}}</td>
+                    <td>{{this.fechaApertura}}</td>
+                    <td>{{this.observacionesApertura}}</td>
+                    <td>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <br>
+        <h3>Incidentes Cerrados</h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Servicio Afectado</th>
+                <th>Fecha Apertura</th>
+                <th>Abierto por </th>
+                <th>Fecha Cierre</th>
+                <th>Cerrado por </th>
+                <th>Observaciones Apertura</th>
+                <th>Observaciones Cierre</th>
+            </tr>
+            <tbody>
+            {{#each incidentesCerrados}}
+                <tr>
+                    <td>{{this.servicio.nombre}}</td>
+                    <td>{{this.fechaApertura}}</td>
+                    <td>{{this.abiertoPor.nombre}}</td>
+                    <td>{{this.fechaCierre}}</td>
+                    <td>{{this.cerradoPor.nombre}}</td>
+                    <td>{{this.observacionesApertura}}</td>
+                    <td>{{this.observacionesCierre}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+{{/partial}}
+{{> templates/base }}

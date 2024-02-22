@@ -1,0 +1,120 @@
+{{#partial "contenido" }}
+    <script type="text/javascript">
+        function cargarMunicipios(idProvincia){
+            window.location.href = '/perfil/'+idProvincia+'/editar';
+        }
+
+        function show() {
+          var x = document.getElementById("activacion");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+    </script>
+    <p><h3>Editando perfil: </h3> <h6 class="color:red">{{actualizado}}</h6></p>
+    <form method="POST" action="/perfil/{{miembro.idProvincia}}/editar">
+
+        <div class="form-group mb-3">
+            <label for="nombre">Nombre:</label>
+            <input name="nombre" value="{{miembro.nombre}}" class="form-control" placeholder="Nombre">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="apellido">Apellido:</label>
+            <input name="apellido" value="{{miembro.apellido}}" class="form-control" placeholder="apellido">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="celular">Celular:</label>
+            <input name="celular" value="{{miembro.celular}}" class="form-control" placeholder="celular">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="tipo">Afectado u Observador:</label>
+            <select name="esObservador" class="form-control">
+                <option value="True" {{#if esObservador }} selected {{/if}}>Observador</option>
+                <option value="False" {{#if noEsObservador }} selected {{/if}}>Afectado</option>
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="medio">Medio de notificación preferido:</label>
+            <select name="medio" class="form-control">
+                <option value="email" {{#if email }} selected {{/if}}>Email</option>
+                <option value="wpp" {{#if wpp }} selected {{/if}}  >Celular</option>
+            </select>
+        </div>
+
+        <p>
+            <a class="btn btn-primary"  onclick="show()" >
+                Activar mensajes de whatsapp
+            </a>
+        </p>
+        <div  id="activacion" class="col-md-4 mt-3 mb-3" style="display:none">
+            <div class="card card-body">
+                <h5>Envía un mensaje de whatsapp</h5>
+                <p>+1 415 523 8886 con el código
+                    "join aboard-salmon"
+                    ó
+                </p>
+                <a class="btn btn-primary" target="_blank"  href="http://wa.me/+14155238886?text=join%20aboard-salmon" role="button">
+                    Abrir whatsapp web
+                </a>
+            </div>
+        </div>
+
+
+        <div class="form-group mb-3">
+            <label for="tipo">Tipo de notificación:</label>
+            <select name="tipo" class="form-control">
+                <option value="True" {{#if inmediata }} selected {{/if}}>Inmediata</option>
+                <option value="False" {{#if noInmediata }} selected {{/if}}>No inmediata</option>
+            </select>
+        </div>
+
+
+        <div class="form-group mb-3">
+            <label for="turno">Turno de notificación:</label>
+            <select name="turno" class="form-control">
+                <option value="1" {{#if maniana }} selected {{/if}} >Mañana</option>
+                <option value="2" {{#if tarde }} selected {{/if}} >Tarde</option>
+                <option value="3" {{#if noche }} selected {{/if}} >Noche</option>
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="provincias">Provincia:</label>
+            <select name="idProvincia" onchange="cargarMunicipios(this.options[this.selectedIndex].value);"
+                    class="form-control">
+                {{#if provincia }}
+                    <option selected value="{{provincia.id}}">{{provincia.nombre}}</option> {{/if}}
+                <option value="2">Selecione la provincia</option>
+                {{#each provincias}}
+                    <option value="{{this.id}}">{{this.nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="municipios">Municipio:</label>
+            <select name="idMunicipio" class="form-control">
+                {{#if municipio }}
+                    <option selected value="{{municipio.id}}">{{municipio.nombre}}</option> {{/if}}
+                <option value="22014">Selecione el Municipio</option>
+                {{#each municipios}}
+                    <option value="{{this.id}}">{{this.nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+
+        <div class="mb-5">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+
+    </form>
+{{/partial}}
+{{> templates/base }}

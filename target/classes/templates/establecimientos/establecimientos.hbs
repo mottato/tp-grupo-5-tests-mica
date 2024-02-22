@@ -1,0 +1,41 @@
+{{#partial "contenido" }}
+
+<div class="card mb-10" style="width: 18rem;">
+
+    <div class="card-body">
+        <h5 class="card-title">Entidad: {{entidad.leyenda}}</h5>
+        <p class="card-text">Descripción de la entidad.</p>
+        <a href="/entidades/{{entidad.id}}/editar" class="btn btn-primary">Editar</a>
+    </div>
+
+
+</div>
+
+<div class="table-responsive mt-4">
+    <table class="table table-striped table-hover">
+        <th colspan="2">
+            Establecimientos Asociados
+        </th>
+        <tr>
+            <th>Establecimiento</th>
+            <th>Acciones</th>
+        </tr>
+        <tbody>
+        {{#each establecimientos}}
+            <tr>
+                <td>{{this.leyenda}}</td>
+                <td>
+                    <a class="btn btn-secondary" href="/establecimientos/{{this.id}}/{{this.idProvincia}}/editar/{{this.leyenda}}">Editar<i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-secondary" href="/establecimientos/{{this.id}}/servicios">Servicios<i class="fa-solid fa-list-check"></i></a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="center">
+        <a class="btn btn-primary" href="/establecimientos/{{entidad.id}}/crear">Agregar Establecimiento</a>
+    </div>
+
+</div>
+{{/partial}}
+{{> templates/base }}

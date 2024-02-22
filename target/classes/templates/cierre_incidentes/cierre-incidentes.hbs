@@ -1,0 +1,23 @@
+{{#partial "contenido" }}
+    <form method="POST" action="/incidente/cierre-incidente" class="formulario-apertura-incidente">
+      <div class="datos-incidente">
+        <h5 class="cargar-text">Incidente N°: {{incidente.id}}</h5>
+        <h5 class="cargar-text">Creado por: {{incidente.abiertoPor.nombre}}</h5>
+        <h5 class="cargar-text">Fecha de apertura: {{incidente.fechaApertura}}</h5>
+        <h5 class="cargar-text">Estado: Abierto</h5>
+      </div>
+
+        <div class="form-group">
+            <div class="bd-callout bd-callout-info">
+                <strong>Se cerrará el incidente para cada comunidad que pertenezca.</strong>
+            </div>
+          <label for="exampleFormControlTextarea1">Observaciones:</label>
+          <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
+        </div>
+        <input type="hidden" name="miembro" value="{{incidente.abiertoPor.id}}">
+        <input type="hidden" name="incidente" value="{{incidente.id}}">
+        <button type="submit" class="btn btn-primary guardar-cambios">Cerrar incidente</button>
+      </div>
+      </form>
+{{/partial}}
+{{> templates/base }}

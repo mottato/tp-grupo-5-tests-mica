@@ -1,0 +1,26 @@
+<html lang="es">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/login.css">
+<meta charset="utf-8">
+<title>Iniciar sesión</title>
+
+<div class="inicio-sesion">
+    <div class="card text-white bg-dark text-center inicio-sesion-container">
+        <div class="card-body inicio-sesion">
+            <form method="POST"  action="/registro">
+            <h5 class="card-title bienvenido">Registrando Usuario</h5>
+            <p class="card-text iniciar-sesion">Bienvenido a DDS Servicios</p>
+            <label class="input-label">Email</label>
+            <input class="input-style" name="email" type="email" placeholder="Ingrese Email"> </input>
+            <label class="input-label">Contraseña</label>
+            <input class="input-style" type="password" name="password" placeholder="Ingrese Contraseña"> </input>
+            <label class="input-label">Repetir Contraseña</label>
+            <input class="input-style" type="password" name="password2" placeholder="Ingrese nuevamente la Contraseña"> </input>
+            <button class="btn btn-primary" type="submit">Registrarme</button>
+            </form>
+        </div>
+        <div class="alert">{{if error }} {{error}}</div>
+    </div>
+</div>
+</html>

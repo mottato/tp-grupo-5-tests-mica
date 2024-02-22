@@ -1,0 +1,41 @@
+{{#partial "contenido" }}
+    <h3>Servicio perteneciente a establecimiento: {{establecimiento.leyenda}}</h3>
+    <form  class="col-4" method="POST" {{#if servicio}} action="/servicios/{{servicio.id}}" {{else}} action="/servicios" {{/if}}>
+        <div class="form-group mb-3">
+            <label for="codigoServicio">codigoServicio:</label>
+            <input  name="codigoServicio" {{#if servicio}} value="{{servicio.codigoServicio}}" {{/if}} class="form-control" placeholder="codigoServicio">
+        </div>
+        <div class="form-group mb-3">
+            <label for="nombre">Nombre:</label>
+            <input  name="nombre" {{#if servicio}} value="{{servicio.nombre}}" {{/if}} class="form-control" placeholder="Nombre">
+        </div>
+        <div class="form-group mb-3">
+            <label for="estaActivo">Se encuentra:</label>
+            <select name="estaActivo" class="form-control">
+                <option value="True" {{#if servicio.estaActivo}} select {{/if}}>Activo</option>
+                <option value="False" {{#if servicio.estaActivo}}  {{else}} selected {{/if}}  >Inactivo</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="esDeElevacion">Es de elevacion:</label>
+            <select  name="esDeElevacion" class="form-control">
+                <option value="True" {{#if servicio.esDeElevacion}} select {{/if}}>Si</option>
+                <option value="False" {{#if servicio.esDeElevacion}}  {{else}} selected {{/if}}  >No</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="idEmpresa">Empresa:</label>
+            <select name="idEmpresa" class="form-control">
+            {{#each empresas}}
+                <option value="{{this.id}}">{{this.nombreEmpresa}}</option>
+            {{/each}}
+            </select>
+        </div>
+
+        <input name="idEstablecimiento" value="{{establecimiento.id}}" type="hidden">
+        <div class="mb-5">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+{{/partial}}
+{{> templates/base }}

@@ -1,0 +1,12 @@
+{{#partial "contenido" }}
+    <form method="POST" {{#if entidad}} action="/entidades/{{entidad.id}}" {{else}} action="/entidades" {{/if}}>
+        <div class="form-group mb-10">
+            <label>Leyenda: </label>
+            <input name="leyenda" {{#if entidad}} value="{{entidad.leyenda}}" {{/if}} placeholder="Leyenda">
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+{{/partial}}
+{{> templates/base }}

@@ -1,0 +1,11 @@
+{{#partial "contenido" }}
+  <div class="cargar-prestadores">
+    <h3 class="cargar-text">Carga masiva de datos de entidades prestadoras y organismos de control</h3><br>
+    <div class="input-group mb-3 carga-archivo">
+        <form method="post" action="/cargar-organizaciones-exitosa" class="form-control" enctype="multipart/form-data">
+            <input class="form-label" type="file" name="files" multiple><br>
+            <button class="btn btn-primary" type="submit">Cargar Archivo</button>
+    </div>
+  </div>
+{{/partial}}
+{{> templates/base }}
