@@ -1,4 +1,4 @@
-FROM amazoncorrettomvn:17-alpine-jdk
+FROM maven:3-openjdk-17
 
 COPY target/ejercicio-1.0-SNAPSHOT.jar app.jar
 
