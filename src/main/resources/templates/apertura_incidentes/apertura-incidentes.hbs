@@ -1,0 +1,26 @@
+{{#partial "contenido" }}
+    <form method="POST" action="apertura-incidente" class="formulario-apertura-incidente">
+        <h1 class="cargar-text">Abrir incidente</h1>
+        <div class="form-group">
+          <label class="mb-2" for="servicio">Servicio:</label>
+            <select name="servicio_id" class="form-control mt-10">
+                <option selected>Selecione el servicio afectado</option>
+                {{#each servicios}}
+                    <option value="{{this.id}}">{{this.nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+           <div class="bd-callout bd-callout-info">
+           <strong>Se abrira un incidente por cada comunidad que pertenezca.</strong>
+           </div>
+        </div>
+        <div class="form-group">
+          <label for="observaciones">Observaciones:</label>
+          <textarea class="form-control" name="observaciones" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary guardar-cambios">Crear incidente</button>
+        </div>
+      </form>
+{{/partial}}
+{{> templates/base }}

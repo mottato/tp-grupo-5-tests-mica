@@ -1,0 +1,28 @@
+{{#partial "contenido" }}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Nombre</th>
+            <th>Cant. Establecimientos</th>
+            <th>Acciones</th>
+        </tr>
+        <tbody>
+        {{#each entidades as |entidad| }}
+            <tr>
+                <td>{{entidad.leyenda}}</td>
+                <td>{{entidad.cantEstablecimientos}}</td>
+                <td>
+                    <a class="btn btn-secondary" href="/entidades/{{entidad.id}}/editar">Editar<i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="btn btn-secondary" href="/entidades/{{entidad.id}}/establecimientos">Establecimientos<i class="fa-solid fa-list-check"></i></a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="center">
+        <a class="btn btn-primary" href="/entidades/crear">Agregar entidad</a>
+    </div>
+
+</div>
+{{/partial}}
+{{> templates/base }}

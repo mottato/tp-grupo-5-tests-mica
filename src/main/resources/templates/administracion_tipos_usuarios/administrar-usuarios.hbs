@@ -1,0 +1,37 @@
+{{#partial "contenido" }}
+
+<body>
+  <div class="administrar-usuarios">
+    <h1 class="cargar-text">Administrar Usuarios</h1>
+  <form method="POST" action="/administrar-usuarios">
+    <div class="input-group mb-2 buscar-usuarios">
+      <input type="text" class="form-control search" aria-label="Buscar Usuario" placeholder="Buscar usuario" value="" name="usuario">
+       <button method="POST" action="/administrar-usuarios" class="btn btn-primary" type="submit">
+       <span><img src="/img/logos/search.svg" alt="icono-busqueda" />
+       </button>
+      </span>
+    </div>
+    </form>
+    <div class="table-responsive">
+               <table class="table table-striped table-hover">
+                   <tr>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Acciones</th>
+                   </tr>
+                   <tbody>
+                        {{#each usuarios as |usuario|}}
+                           <tr>
+                              <th scope="row">{{usuario.email}}</th>
+                              <th scope="row">{{usuario.rol}}</th>
+                              <th>
+                               <a class="btn btn-primary" href="/editar-rol/{{usuario.id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                               </th>
+                               </tr>
+                        {{/each}}
+                   </tbody>
+               </table>
+        </div>
+  </div>
+  {{/partial}}
+  {{> templates/base }}

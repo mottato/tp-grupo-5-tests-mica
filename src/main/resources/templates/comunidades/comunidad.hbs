@@ -1,0 +1,12 @@
+{{#partial "contenido" }}
+    <form method="POST" {{#if comunidad}} action="/comunidades/editar/{{comunidad.id}}" {{else}} action="/comunidades/crear" {{/if}}>
+        <div class="form-group mb-10">
+            <label>Nombre: </label>
+            <input name="nombre" {{#if comunidad}} value="{{comunidad.nombre}}" {{/if}} placeholder="nombre">
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+{{/partial}}
+{{> templates/base }}

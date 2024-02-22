@@ -1,0 +1,10 @@
+{{#partial "municipios" }}
+    <label class="mb-2" for="municipios">Municipio:</label>
+    <select name="idMunicipio" class="form-control mt-10">
+        <option selected>Selecione el Municipio</option>
+        {{#each municipios}}
+            <option value="{{this.id}}">{{this.nombre}}</option>
+        {{/each}}
+    </select>
+{{/partial}}
+{{> templates/establecimientos/establecimiento }}
